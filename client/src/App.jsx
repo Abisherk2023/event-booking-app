@@ -5,6 +5,7 @@ import EventDetail from './pages/EventDetail';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import MyBookings from './pages/MyBookings';
+import CreateEvent from './pages/CreateEvent';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/my-bookings" element={<MyBookings />} />
+        <Route path="/create-event" element={<CreateEvent />} />
       </Routes>
     </>
   );

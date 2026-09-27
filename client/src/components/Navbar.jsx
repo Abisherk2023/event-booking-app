@@ -10,7 +10,8 @@ function Navbar() {
       <div className="nav-right">
         {user ? (
           <>
-            <Link to="/my-bookings">My Bookings</Link>
+           <Link to="/my-bookings">My Bookings</Link>
+           <Link to="/create-event">Create Event</Link>
             <span>Hi, {user.name}</span>
             <button onClick={logout}>Logout</button>
           </>
