@@ -5,7 +5,7 @@ const protect = require('../middleware/authMiddleware');
 
 //Get all events
 router.get('/', async (req, res) => {
-  console.log('EVENTS ROUTE HIT - FILTER VERSION');
+  res.set('Cache-Control', 'no-store');
   try {
     const { location, date } = req.query;
     const filter = {};
