@@ -4,16 +4,28 @@ const Event = require('../models/Event');
 const protect = require('../middleware/authMiddleware');
 
 //Get all events
-router.get('/',async (req,res) =>{
-    try{
-        const events = await Event.find();
-        res.json(events);
-    }catch(err){
-        res.status(500).json({message: err.message});
+router.get('/', async (req, res) => {
+  try {
+    const { location, date } = req.query;
+    const filter = {};
 
+    if (location) {
+      filter.location = { $regex: location, $options: 'i' };
     }
-});
 
+    if (date) {
+      const startOfDay = new Date(date);
+      const endOfDay = new Date(date);
+      endOfDay.setDate(endOfDay.getDate() + 1);
+      filter.date = { $gte: startOfDay, $lt: endOfDay };
+    }
+
+    const events = await Event.find(filter);
+    res.json(events);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 //Get one event by ID
 router.get('/:id', async (req,res) =>{
     try{
