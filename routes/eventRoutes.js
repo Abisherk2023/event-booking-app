@@ -26,7 +26,7 @@ router.get('/:id', async (req,res) =>{
 });  
 
 // POST create a new event
-router.post('/', protect,async (req, res) => {
+router.post('/', protect, async (req, res) => {
   try {
     const { title, description, date, location, capacity } = req.body;
     const newEvent = new Event({ title, description, date, location, capacity });
